@@ -1,68 +1,85 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Valid Chess Moves
 
-## Available Scripts
+<div align="center">
 
-In the project directory, you can run:
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/mariorodeghiero/valid-chess-moves/issues)
+[![Feature Requests](https://img.shields.io/github/issues/mariorodeghiero/valid-chess-moves/feature-request.svg)](https://github.com/mariorodeghiero/valid-chess-moves/issues?q=is%3Aopen+is%3Aissue+label%3Afeature-request+sort%3Areactions-%2B1-desc)
+[![Bugs](https://img.shields.io/github/issues/mariorodeghiero/valid-chess-moves/bug.svg)](https://github.com/mariorodeghiero/valid-chess-moves/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3Abug)
+[![GitHub](https://img.shields.io/github/tag/mariorodeghiero/valid-chess-moves.svg?style=flat-square)](https://github.com/mariorodeghiero/valid-chess-moves/tags)
+[![The MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
-### `npm start`
+</div>
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Built With
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- [ReactJS](https://reactjs.org) - ReactJS
+- [styled-components](http://styled-components.com/) - styled-components
+- [Heroku](https://firebase.google.com/) - Firebase
+- [Node.js](https://nodejs.org/en/) - Node.js
 
-### `npm test`
+## Style Guide
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Vs Code](https://code.visualstudio.com) - ReactJS
+- [Prettier](https://prettier.io) - Prettier
+- [ESLint](https://eslint.org) - ESLint
+- [Airbnb](https://github.com/airbnb/javascript/tree/master/react) - Airbnb
+- [EditorConfig](https://editorconfig.org) - EditorConfig
 
-### `npm run build`
+**Note:** Insert "editor.formatOnSave": true into your User Settings in VSCode.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Install
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+First, clone the repo via git:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+git clone --depth=1 https://github.com/mariorodeghiero/valid-chess-moves.git your-project-name
+```
 
-### `npm run eject`
+And then install dependencies with yarn.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+$ cd your-project-name
+$ npm install
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Run
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+$ npm run start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+After run, the browser open window automatically at http://localhost:3000/
 
-## Learn More
+## Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Run the command below to deploy, minimizing All Files.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+$ npm run build
+```
 
-### Code Splitting
+or
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+```bash
+$ yarn build
+```
 
-### Analyzing the Bundle Size
+## Contributing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
-### Making a Progressive Web App
+## Author
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- [Mário Antônio do Amaral Rodeghiero](https://github.com/mariorodeghiero)
 
-### Advanced Configuration
+## Contributors
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+| [![Mário Rodeghiero](https://avatars1.githubusercontent.com/u/24671133?s=88&v=4)](https://github.com/mariorodeghiero) |
+| --------------------------------------------------------------------------------------------------------------------- |
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+| [Mário Rodeghiero](https://github.com/mariorodeghiero)
 
-### `npm run build` fails to minify
+## License
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
