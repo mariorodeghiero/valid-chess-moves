@@ -9,7 +9,7 @@ import styled from 'styled-components';
  */
 
 const Board = styled.div`
-  border: 49px solid #462921;
+  border: 35px solid #462921;
   width: 560px;
   margin: 0 auto;
   display: grid;
@@ -23,6 +23,7 @@ const Cell = styled.div`
   font-size: 150%;
   background-color: #b5915f;
   color: #000;
+  font-size: 0.6rem;
   text-align: center;
 
   :nth-child(-2n + 7),
@@ -36,6 +37,33 @@ const Cell = styled.div`
     background-color: #441a03;
     color: #fff;
   }
+`;
+
+const Aside = styled.aside`
+  position: absolute;
+  padding: 20px;
+  /* height: 200px; */
+  top: 30%;
+  left: 50px;
+  background-color: #333333;
+  border-radius: 4px;
+  border: none;
+`;
+const Button = styled.button`
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.4rem 0.9rem;
+  background-color: #ff0081;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  outline: 0;
+`;
+const Description = styled.p`
+  color: #ffffff;
+  font-size: 0.7rem;
+  padding-bottom: 10px;
 `;
 
 export default class Chessboard extends Component {
@@ -124,7 +152,10 @@ export default class Chessboard extends Component {
           ))}
           {console.table(board)}
         </Board>
-        <button type="submit">Send</button>
+        <Aside>
+          <Description>Select your position and press start.</Description>
+          <Button type="submit">Start</Button>
+        </Aside>
       </div>
     );
   }
