@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import styled from 'styled-components';
 /**
  * TODO:
  *  [] -  create board
@@ -7,6 +7,36 @@ import React, { Component } from 'react';
  * FIXME:
  *  [] -
  */
+
+const Board = styled.div`
+  border: 49px solid #462921;
+  width: 560px;
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: repeat(8, 70px);
+  grid-template-rows: repeat(8, 70px);
+  grid-auto-flow: row;
+`;
+const Cell = styled.div`
+  padding: 20px;
+  font-size: 150%;
+  background-color: #b5915f;
+  color: #000;
+  text-align: center;
+
+  :nth-child(-2n + 7),
+  :nth-child(9) ~ div:nth-child(-2n + 16),
+  :nth-child(16) ~ div:nth-child(-2n + 23),
+  :nth-child(25) ~ div:nth-child(-2n + 32),
+  :nth-child(32) ~ div:nth-child(-2n + 39),
+  :nth-child(41) ~ div:nth-child(-2n + 48),
+  :nth-child(48) ~ div:nth-child(-2n + 55),
+  :nth-child(57) ~ div:nth-child(-2n + 64) {
+    background-color: #441a03;
+    color: #fff;
+  }
+`;
 
 export default class Chessboard extends Component {
   constructor(props) {
@@ -86,12 +116,15 @@ export default class Chessboard extends Component {
     const { board } = this.state;
     return (
       <div>
-        {board.map(cell => (
-          <div key={cell} className={cell}>
-            {cell}
-          </div>
-        ))}
-        {console.table(board)}
+        <Board>
+          {board.map(cell => (
+            <Cell key={cell} className={cell}>
+              {cell}
+            </Cell>
+          ))}
+          {console.table(board)}
+        </Board>
+        <button type="submit">Send</button>
       </div>
     );
   }
