@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { createGlobalStyle } from 'styled-components';
 
-import Logo from './img/logo.svg';
 import Chessboard from './Components/Chessboard';
+import Footer from './Components/Footer';
 /**
  * TODO:
  *  [] -  sendPosition
@@ -36,11 +36,8 @@ const GlobalStyle = createGlobalStyle`
     color: #c3c3c3;
   }
   img {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top: 100px;
-    left: 120px;
+    width: 80px;
+    height: 80px;
   }
 `;
 
@@ -64,9 +61,8 @@ export default class App extends Component {
 
       <React.Fragment>
         <GlobalStyle />
-        <img src={Logo} alt="Valid Chess Moves Logo" />
-        <h1>Valid Chess Moves</h1>
         <Chessboard />
+        <Footer />
       </React.Fragment>
     );
   }

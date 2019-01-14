@@ -1,26 +1,32 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+
+import Logo from '../img/logo.svg';
 /**
  * TODO:
- *  [] -  create board
+ *  [x] -  Create board
+ *  [x] -  Get position
  *  [] -  Change background color of each cell
  * FIXME:
- *  [] -
+ *  [] - Remove comments
+ *  [] - Remove console.log()
  */
 
 const Board = styled.div`
-  border: 35px solid #462921;
-  width: 560px;
-  margin: 0 auto;
+  border: 30px solid #462921;
+  margin-top: 5%;
+  margin-left: 35%;
+  width: 50%;
+  /* margin: 0 auto; */
   display: grid;
   grid-gap: 0;
-  grid-template-columns: repeat(8, 70px);
-  grid-template-rows: repeat(8, 70px);
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
   grid-auto-flow: row;
 `;
+
 const Cell = styled.div`
-  padding: 20px;
-  font-size: 150%;
+  padding: 30%;
   background-color: #b5915f;
   color: #000;
   font-size: 0.6rem;
@@ -44,7 +50,7 @@ const Aside = styled.aside`
   padding: 20px;
   /* height: 200px; */
   top: 30%;
-  left: 50px;
+  left: 7%;
   background-color: #333333;
   border-radius: 4px;
   border: none;
@@ -71,6 +77,7 @@ export default class Chessboard extends Component {
     super(props);
 
     this.state = {
+      position: '',
       board: [
         'a8',
         'b8',
@@ -140,20 +147,27 @@ export default class Chessboard extends Component {
     };
   }
 
+  handleCell = (event) => {
+    console.log('Position', event.target.value);
+  }
+
   render() {
-    const { board } = this.state;
+    const { board, position } = this.state;
     return (
       <div>
         <Board>
           {board.map(cell => (
             <Cell key={cell} className={cell}>
-              {cell}
+              <button type="submit" value={cell} onClick={(e) => { this.handleCell(e); }}>{cell}</button>
             </Cell>
           ))}
           {console.table(board)}
         </Board>
         <Aside>
+          <img src={Logo} alt="Valid Chess Moves Logo" />
+          <h1>Valid Chess Moves</h1>
           <Description>Select your position and press start.</Description>
+          <input type="text" value={position} />
           <Button type="submit">Start</Button>
         </Aside>
       </div>
