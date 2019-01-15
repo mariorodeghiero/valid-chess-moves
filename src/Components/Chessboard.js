@@ -74,7 +74,7 @@ const Button = styled.button`
 const CellButton = styled.button`
     display: inline-block;
     padding: 40% 50%;
-    background-color: ${props => (props.selectCell ? 'red' : 'transparent')};
+    background-color: ${props => (props.selectCell || props.highlighCell ? 'red' : 'transparent')};
     color: #c2c2c2;
     border: none;
     outline: 0;
@@ -174,7 +174,12 @@ export default class Chessboard extends Component {
   }
 
   handleCell = (event) => {
+    this.clearHighlight();
     this.setState({ positionText: event.target.value, selectCell: event.target.value });
+  }
+
+  clearHighlight = () => {
+    this.setState({ highlighCell: [] });
   }
 
   getPositions = (value) => {
@@ -183,9 +188,18 @@ export default class Chessboard extends Component {
     this.setState({ highlighCell: positons });
   }
 
+  highligh = (value) => {
+    const { highlighCell } = this.state;
+    const isHighligh = highlighCell.indexOf(value) !== -1;
+    return isHighligh;
+  }
+
   render() {
     const {
-      board, positionText, selectCell, highlighCell,
+      board,
+      positionText,
+      selectCell,
+      highlighCell,
     } = this.state;
     return (
       <div>
@@ -197,7 +211,7 @@ export default class Chessboard extends Component {
                 value={cell}
                 onClick={(e) => { this.handleCell(e); }}
                 selectCell={selectCell === cell}
-                highlighCell="test"
+                highlighCell={this.highligh(cell)}
               />
             </Cell>
           ))}

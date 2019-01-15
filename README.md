@@ -32,7 +32,7 @@
 First, clone the repo via git:
 
 ```bash
-git clone --depth=1 https://github.com/mariorodeghiero/valid-chess-moves.git your-project-name
+git clone https://github.com/mariorodeghiero/valid-chess-moves.git your-project-name
 ```
 
 And then install dependencies with yarn.
