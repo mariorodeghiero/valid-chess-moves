@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Logo from '../img/logo.svg';
+import calculateMovements from '../knight';
 /**
  * TODO:
- *  [x] -  Create board
- *  [x] -  Get position
- *  [] -  Change background color of each cell
+ *  [x] - Create board
+ *  [x] - Get position
+ *  [x] - Change background color of each cell
+ *  [x] - positionText
+ *  [x] - selectCell
+ *  [x] - highlighCell
  * FIXME:
  *  [] - Remove comments
  *  [] - Remove console.log()
@@ -26,9 +30,8 @@ const Board = styled.div`
 `;
 
 const Cell = styled.div`
-  padding: 30%;
+  /* padding: 30%; */
   background-color: #b5915f;
-  color: #000;
   font-size: 0.6rem;
   text-align: center;
 
@@ -41,7 +44,6 @@ const Cell = styled.div`
   :nth-child(48) ~ div:nth-child(-2n + 55),
   :nth-child(57) ~ div:nth-child(-2n + 64) {
     background-color: #441a03;
-    color: #fff;
   }
 `;
 
@@ -55,7 +57,9 @@ const Aside = styled.aside`
   border-radius: 4px;
   border: none;
 `;
+
 const Button = styled.button`
+  margin-top: 20px;
   display: inline-block;
   font-size: 0.7rem;
   padding: 0.4rem 0.9rem;
@@ -66,10 +70,30 @@ const Button = styled.button`
   cursor: pointer;
   outline: 0;
 `;
+
+const CellButton = styled.button`
+    display: inline-block;
+    padding: 40% 50%;
+    background-color: ${props => (props.selectCell ? 'red' : 'transparent')};
+    color: #c2c2c2;
+    border: none;
+    outline: 0;
+`;
+
 const Description = styled.p`
   color: #ffffff;
   font-size: 0.7rem;
   padding-bottom: 10px;
+`;
+
+const CurrentPosition = styled.div`
+  color: #000;
+  font-size: 0.7rem;
+  background-color: #e2e5ec;
+  width: 60%;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 4px;
 `;
 
 export default class Chessboard extends Component {
@@ -77,7 +101,9 @@ export default class Chessboard extends Component {
     super(props);
 
     this.state = {
-      position: '',
+      positionText: 'Current position...',
+      selectCell: [],
+      highlighCell: [],
       board: [
         'a8',
         'b8',
@@ -148,27 +174,44 @@ export default class Chessboard extends Component {
   }
 
   handleCell = (event) => {
-    console.log('Position', event.target.value);
+    this.setState({ positionText: event.target.value, selectCell: event.target.value });
+  }
+
+  getPositions = (value) => {
+    const positons = calculateMovements(value);
+    console.log('get', positons);
+    this.setState({ highlighCell: positons });
   }
 
   render() {
-    const { board, position } = this.state;
+    const {
+      board, positionText, selectCell, highlighCell,
+    } = this.state;
     return (
       <div>
         <Board>
           {board.map(cell => (
-            <Cell key={cell} className={cell}>
-              <button type="submit" value={cell} onClick={(e) => { this.handleCell(e); }}>{cell}</button>
+            <Cell key={cell}>
+              <CellButton
+                type="submit"
+                value={cell}
+                onClick={(e) => { this.handleCell(e); }}
+                selectCell={selectCell === cell}
+                highlighCell="test"
+              />
             </Cell>
           ))}
-          {console.table(board)}
         </Board>
         <Aside>
           <img src={Logo} alt="Valid Chess Moves Logo" />
           <h1>Valid Chess Moves</h1>
           <Description>Select your position and press start.</Description>
-          <input type="text" value={position} />
-          <Button type="submit">Start</Button>
+          <CurrentPosition>{positionText}</CurrentPosition>
+          <Button type="submit" onClick={() => this.getPositions(positionText)}>Start</Button>
+          <p>{highlighCell}</p>
+          {console.table(board)}
+          {console.log(selectCell)}
+          {console.log(highlighCell)}
         </Aside>
       </div>
     );

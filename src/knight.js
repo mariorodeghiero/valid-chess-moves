@@ -31,31 +31,16 @@ const calculateMovements = (cell) => {
 
   for (let i = 0; i < xPositions.length; i++) {
     for (let j = 0; j < yPositions.length; j++) {
-      if (
-        Math.abs(cellX - xPositions[i])
-          + Math.abs(cellY - yPositions[j])
-        === 3
-      ) {
-        console.log('Valid: ', [
-          xPositions[i],
-          yPositions[j],
-        ]);
-        if (
-          !coordinates.includes([xPositions[i], yPositions[j]])
-        ) {
+      if (Math.abs(cellX - xPositions[i]) + Math.abs(cellY - yPositions[j]) === 3) {
+        if (!coordinates.includes([xPositions[i], yPositions[j]])) {
           coordinates.push([xPositions[i], yPositions[j]]);
         }
       }
     }
   }
 
-  console.log('eixo x: ', cellX);
-  console.log('eixo y: ', cellY);
-  console.log('Possivel posiçoes em x:', xPositions);
-  console.log('Possivel posiçoes em y:', yPositions);
-  console.log('Possiveis cordenadas:', coordinates);
-  console.log('Numero de movimentações:', coordinates.length);
-  return coordinates.length;
+  const possible = coordinates.map(c => `${axisX[c[0] - 1]}${c[1]}`);
+  return possible;
 };
 
-calculateMovements('e5');
+export default calculateMovements;
