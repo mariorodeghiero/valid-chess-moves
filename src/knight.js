@@ -43,4 +43,13 @@ const calculateMovements = (cell) => {
   return possible;
 };
 
-export default calculateMovements;
+const getPosition = (cell) => {
+  const firstPositions = calculateMovements(cell);
+  console.table(firstPositions);
+  const secondPositions = firstPositions.map(position => calculateMovements(position));
+  const possiblesCordenates = secondPositions.reduce((a, b) => a.concat(b));
+  console.table(possiblesCordenates);
+  return possiblesCordenates;
+};
+
+export default getPosition;

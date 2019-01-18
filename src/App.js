@@ -3,41 +3,26 @@ import { createGlobalStyle } from 'styled-components';
 
 import Chessboard from './Components/Chessboard';
 import Footer from './Components/Footer';
-/**
- * TODO:
- *  [] -  sendPosition
- *  [] -  selectedCell
- *  [] -  only one cell can be selected
- *  [] -  highlighted
- *  [] -  knighPosition
- *  [] -  possiblePositions
- *  [] -  algebraicNotation
- * FIXME:
- *  [] -
- */
-
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Roboto');
-  * {
-    font-family: "Roboto";
+  body{
+    @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+    font-family: 'Roboto', sans-serif;
     font-weight: 100;
     line-height: 1.1;
     letter-spacing: 0.025em;
-  }
-  body{
     margin: 0;
     padding: 0;
+    width: 100%;
+    min-height: 100vh;
     text-align: center;
     font-size: 100%;
-    background: #232526;
-    background: -webkit-linear-gradient(to right, #232526, #414345);
-    background: linear-gradient(to right, #232526, #414345);
+    background: #e2e5ec;
     color: #c3c3c3;
   }
   img {
-    width: 80px;
-    height: 80px;
+    width: 140px;
+    height: 140px;
   }
 `;
 
@@ -46,13 +31,7 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      // highlighted: [],
-      // selectedCell: [],
-      // algebraicNotation: '',
-      // knighPosition: [],
-      // sendPosition: false,
-      // possiblePositions: [],
-      // moved: false,
+
     };
   }
 
