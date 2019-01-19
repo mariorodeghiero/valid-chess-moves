@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import Logo from '../img/logo.svg';
-import calculateMovements from '../knight';
+import { error } from 'util';
+import Aside from './Aside';
+import Header from './Header';
 
 const Board = styled.div`
   border: 30px solid #462921;
   margin: 0 auto;
-  right: 0;
   width: 100%;
+  height: 100%;
   display: grid;
   grid-gap: 0;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
   grid-auto-flow: row;
 
-  @media (max-width: 700px) {
+  @media (max-width: 768px) {
     margin: 0 auto;
-    margin-bottom: 10%;
-    width: 80%;
+    margin-bottom: 15%;
+    width: 90%;
+    height: 90%;
     border: 10px solid #462921;
   }
 `;
@@ -39,145 +41,52 @@ const Cell = styled.div`
   }
 `;
 
-const AsideDiv = styled.div`
-  width: 100%;
-  padding-top: 35%;
-
-  @media (max-width: 700px) {
-      padding-top: 0;
-  }
-`;
-const Aside = styled.aside`
-  padding: 20px;
-  width: 60%;
-  margin: 0 auto;
-  background-color: #ffffff;
-  border-radius: 4px;
-  border: none;
-  p{
-    margin: 0;
-    padding-bottom: 20px;
-    font-weight: 1.2em;
-    font-size: 0.8rem;
-    color: #000;
-  }
-  img{
-    width: 80px;
-    width: 80px;
-  }
-
-  @media (max-width: 700px) {
-    padding: 20px;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-flow: row;
-    margin-bottom: 30px;
-    p{
-      margin-top: -20px;
-      font-size: 0.7rem;
-    }
-    img{
-      margin-top: -20px;
-      width: 60px;
-      width: 60px;
-    }
-  }
-`;
-
-const Button = styled.button`
-  margin-top: 20px;
-  display: inline-block;
-  font-size: 0.7rem;
-  padding: 0.4rem 0.9rem;
-  background-color: #ff0081;
-  color: #fff;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  outline: 0;
-`;
-
 const CellButton = styled.button`
-    padding: 40% 50%;
+    /* padding: 40% 50%; */
+    /* margin: 3px; */
+    width: 100%;
+    height: 100%;
     background-color: ${props => (props.highlighCell ? '#a40a3c' : 'transparent')};
     color: #c2c2c2;
+    outline: 0;
     background-image:${props => (props.selectCell ? 'url(\'https://static.thenounproject.com/png/839143-200.png\')' : 'none')};
-    background-size:cover;
     background-repeat:no-repeat;
     border: none;
-    outline: 0;
+    background-size:cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size:cover;
+    -webkit-appearance: none;
 
-    @media (max-width: 700px) {
+    @media (max-width: 768px) {
       padding: 40% 50%;
   }
 `;
 
 const Wrapper = styled.div`
-  width: 100%;
+  max-width: 80%;
+  margin: 0 auto;
   display: grid;
   grid-gap: 100px;
   grid-template-rows: repeat(3, auto);
   grid-auto-flow: row;
 `;
 
-const ContainerBoard = styled.div`
-    width: 100%;
+const Container = styled.div`
     display: grid;
-    grid-gap: 0;
-    grid-template-columns: 1fr 2fr 1fr;
+    /* grid-gap: 0; */
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 500px;
     grid-auto-flow: row;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 50px;
 
-    @media (max-width: 700px) {
-      width: 80%;
+    @media (max-width: 768px) {
       margin: 0 auto;
       grid-template-columns: 1fr;
+      grid-template-rows: 300px;
       grid-auto-flow: row;
-  }
-`;
-
-const Header = styled.header`
-  margin-top: 100px;
-  h1{
-    padding-top: 30px;
-    font-weight: 100;
-    color: #000;
-  }
-  p{
-  margin: 0 auto;
-  width: 60%;
-  color: #000;
-  font-size: 1rem;
-  padding-top: 50px;
-  font-weight: 100;
-  line-height: 1.6em;
-  }
-
-  @media (max-width: 700px) {
-    margin-top: 50px;
-    h1{
-      font-size: 1.8rem;
-      font-weight: 200;
-      color: #000;
-    }
-    img{
-      width: 100px;
-      height: 100px;
-    }
-  }
-`;
-
-const CurrentPosition = styled.div`
-  color: #000;
-  font-size: 0.8rem;
-  background-color: #e2e5ec;
-  width: 60%;
-  height: 10px;
-  padding: 10px 10px 10px 10px;
-  margin: 0 auto;
-  border-radius: 4px;
-
-  @media (max-width: 700px) {
-      width: 40%;
-      padding: 5px;
   }
 `;
 
@@ -186,7 +95,7 @@ export default class Chessboard extends Component {
     super(props);
 
     this.state = {
-      positionText: '',
+      position: '',
       selectCell: [],
       highlighCell: [],
       board: [
@@ -260,7 +169,7 @@ export default class Chessboard extends Component {
 
   handleCell = (event) => {
     this.clearHighlight();
-    this.setState({ positionText: event.target.value, selectCell: event.target.value });
+    this.setState({ position: event.target.value, selectCell: event.target.value });
   }
 
   clearHighlight = () => {
@@ -268,9 +177,12 @@ export default class Chessboard extends Component {
   }
 
   getPositions = (value) => {
-    const positons = calculateMovements(value);
-    console.log('get', positons);
-    this.setState({ highlighCell: positons });
+    const url = `https://cors-anywhere.herokuapp.com/https://valid-chess-moves.herokuapp.com/calculate/${value}`;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => this.setState({ highlighCell: data }))
+      .catch(error, console.log('err', error));
   }
 
   highligh = (value) => {
@@ -282,33 +194,17 @@ export default class Chessboard extends Component {
   render() {
     const {
       board,
-      positionText,
+      position,
       selectCell,
     } = this.state;
     return (
       <Wrapper>
-        <Header>
-          <img src={Logo} alt="Valid Chess Moves Logo" />
-          <h1>Valid Chess Moves</h1>
-          <p>
-            Chess is a two-player strategy board game played on a chessboard,
-            a checkered game board with 64 squares/cells arranged in an 8x8 grid.
-            Algebraic notation in chess is a method to map cells using A to H as
-            columns (left to right) and 1 to 8 as rows (bottom to top).
-          </p>
-        </Header>
-        <ContainerBoard>
-          <AsideDiv>
-            <Aside>
-              <img src={Logo} alt="Valid Chess Moves Logo" />
-              <p>
-                Select the initial position and click on the button for the app highlight all
-                cells where the Knight can move in exactly 2 turns.
-              </p>
-              <CurrentPosition>{positionText.toUpperCase()}</CurrentPosition>
-              <Button type="submit" onClick={() => this.getPositions(positionText)}>Start</Button>
-            </Aside>
-          </AsideDiv>
+        <Header />
+        <Container>
+          <Aside
+            position={position}
+            getPositions={this.getPositions}
+          />
           <div>
             <Board>
               {board.map(cell => (
@@ -324,7 +220,7 @@ export default class Chessboard extends Component {
               ))}
             </Board>
           </div>
-        </ContainerBoard>
+        </Container>
       </Wrapper>
     );
   }

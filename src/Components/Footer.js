@@ -1,55 +1,51 @@
 import React, { } from 'react';
 import styled from 'styled-components';
 
-const FooterLicense = styled.footer`
-    div {
-      border-top: 1px solid #A0A2A7;
-      border-top-width: 90%;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-column-gap: 20px;
-      padding-bottom: 20px;
-      width: 90%;
-      margin: 0 auto;
-      color: #000;
-      ul {
-        text-align: left;
-        padding-left: 0px;
-        padding-top: 25px;
-        padding-bottom: 0;
-        li {
-          padding-top: 20px;
-          list-style: none;
-          a {
-              text-decoration: none;
-              font-size: 0.7rem;
-              transition: color 1s ease-out;
-              color: inherit;
-              cursor: pointer;
-              color: #A0A2A7;
-          &:hover {
-            color: #000000;
-          }
-          i{
-            font-size: 1rem;
-          }
-          span{
-            padding-left: 10px;
-          }
+import { mediaFooter } from '../style-utils';
+
+const FooterDiv = styled.div`
+  border-top: 1px solid #A0A2A7;
+  border-top-width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 20px;
+  padding-bottom: 20px;
+  width: 90%;
+  margin: 0 auto;
+  color: #000;
+
+  ul {
+    text-align: left;
+    padding-left: 0px;
+    padding-top: 25px;
+    padding-bottom: 0;
+
+    li {
+      padding-top: 20px;
+      list-style: none;
+
+      a {
+          text-decoration: none;
+          font-size: 0.7rem;
+          transition: color 1s ease-out;
+          color: inherit;
+          cursor: pointer;
+          color: #A0A2A7;
+        &:hover {
+          color: #000000;
         }
+
+        i{
+          font-size: 1rem;
         }
-      }
-      @media (max-width: 700px) {
-        grid-template-columns: 1fr 1fr;
-        ul{
-          li{
-            a {
-                font-size: 0.2rem;
-            }
-          }
+
+        span{
+          padding-left: 10px;
         }
       }
     }
+  }
+  ${mediaFooter}
 `;
 
 const CopyRight = styled.a`
@@ -58,13 +54,13 @@ const CopyRight = styled.a`
 `;
 
 const Footer = () => (
-  <FooterLicense>
-    <div>
+  <footer>
+    <FooterDiv>
       <section>
         <ul>
           <span>Social media</span>
           <li>
-            <a href="https://github.com/mariorodeghiero">
+            <a href="https://github.com/mariorodeghiero/">
               <i className="fab fa-github" />
               <span>
               github.com/mariorodeghiero
@@ -113,8 +109,8 @@ const Footer = () => (
           </li>
         </ul>
       </section>
-    </div>
-  </FooterLicense>
+    </FooterDiv>
+  </footer>
 );
 
 export default Footer;
