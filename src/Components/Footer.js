@@ -31,20 +31,22 @@ const FooterDiv = styled.div`
           color: inherit;
           cursor: pointer;
           color: #A0A2A7;
-        &:hover {
-          color: #000000;
-        }
 
-        i{
+          &:hover {
+            color: #000000;
+          }
+
+        i {
           font-size: 1rem;
         }
 
-        span{
+        span {
           padding-left: 10px;
         }
       }
     }
   }
+
   ${mediaFooter}
 `;
 

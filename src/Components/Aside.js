@@ -3,13 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Logo from '../img/logo.svg';
-import {
-  mediaAsideDiv,
-  mediaBox,
-  mediaCurrentPosition,
-  mediaBoxIpad,
-  mediaAsideDivIpad,
-} from '../style-utils';
+import { mediaAsideDiv, mediaBox, mediaCurrentPosition } from '../style-utils';
 
 const AsideDiv = styled.div`
   width: 100%;
@@ -17,8 +11,8 @@ const AsideDiv = styled.div`
   margin-left: -15%;
 
   ${mediaAsideDiv}
-  ${mediaAsideDivIpad}
 `;
+
 const Box = styled.aside`
   padding: 20px;
   width: 70%;
@@ -26,7 +20,8 @@ const Box = styled.aside`
   background-color: #ffffff;
   border-radius: 4px;
   border: none;
-  p{
+
+  p {
     margin: 0;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -34,19 +29,19 @@ const Box = styled.aside`
     font-size: 0.8rem;
     color: #000;
   }
-  img{
+  img {
     width: 80px;
     height: 80px;
     padding-top: 10px;
   }
 
   ${mediaBox}
-  ${mediaBoxIpad}
 `;
 
 const CurrentPosition = styled.div`
   color: #000;
   font-size: 0.8rem;
+  font-weight: 400;
   background-color: #e2e5ec;
   width: 60%;
   height: 10px;
@@ -70,12 +65,11 @@ const Button = styled.button`
   outline: 0;
 `;
 
-
 export default class Aside extends PureComponent {
   static defaultProps = {
     position: PropTypes.string,
     getPositions: PropTypes.func,
-  }
+  };
 
   render() {
     const { position, getPositions } = this.props;
@@ -84,11 +78,13 @@ export default class Aside extends PureComponent {
         <Box>
           <img src={Logo} alt="Valid Chess Moves Logo" />
           <p>
-                  Select the initial position and click on the button for the app highlight all
-                  cells where the Knight can move in exactly 2 turns.
+            Select the initial position and click on the button for the app highlight all cells
+            where the Knight can move in exactly 2 turns.
           </p>
           <CurrentPosition>{position.toUpperCase()}</CurrentPosition>
-          <Button type="submit" onClick={() => getPositions(position)}>Start</Button>
+          <Button type="submit" onClick={() => getPositions(position)}>
+            Start
+          </Button>
         </Box>
       </AsideDiv>
     );

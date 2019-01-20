@@ -1,4 +1,22 @@
+/**
+ * Main.js
+ * Media Queries
+ */
+export function mediaContainer() {
+  return `
+    @media (max-width: 768px) {
+      margin: 0 auto;
+      grid-template-columns: 1fr;
+      grid-template-rows: 300px;
+      grid-auto-flow: row;
+    }
+  `;
+}
 
+/**
+ * Header.js
+ * Media Queries
+ */
 export function mediaWelcome() {
   return `
     @media (max-width: 760px) {
@@ -18,16 +36,22 @@ export function mediaWelcome() {
   `;
 }
 
+/**
+ * Footer.js
+ * Media Queries
+ */
+
 export function mediaFooter() {
   return `
   @media (max-width: 768px) {
     margin: 0 auto;
     width: 50%;
     grid-template-columns: 1fr;
+
     ul{
       li{
         a {
-            font-size: 0.2rem;
+          font-size: 0.2rem;
         }
       }
     }
@@ -35,18 +59,20 @@ export function mediaFooter() {
   `;
 }
 
+/**
+ * Asside.js
+ * Media Queries
+ */
+
 export function mediaAsideDiv() {
   return `
     @media (max-width: 760px) {
       padding-top: 0;
     }
-  `;
-}
 
-export function mediaAsideDivIpad() {
-  return `
     @media (max-width: 768px) {
       margin: 0 auto;
+      padding-bottom: 100px;
     }
   `;
 }
@@ -68,6 +94,7 @@ export function mediaBox() {
       grid-template-columns: 1fr;
       grid-auto-flow: row;
       margin-bottom: 30px;
+
       p{
         margin-top: -20px;
         font-size: 0.6rem;
@@ -78,11 +105,7 @@ export function mediaBox() {
         width: 60px;
       }
     }
-  `;
-}
 
-export function mediaBoxIpad() {
-  return `
     @media (max-width: 768px) {
       margin-bottom: 50px;
     }
@@ -93,6 +116,47 @@ export function mediaBoxComputer() {
   return `
     @media (max-width: 1024px) {
       margin-bottom: 50px;
+    }
+  `;
+}
+
+
+/**
+ * Board.js
+ * Media Queries
+ */
+
+export function mediaBoardContainer() {
+  return `
+    @media (max-width: 760px) {
+      margin-bottom: 15%;
+      width: 90%;
+      height: 90%;
+      border: 10px solid #462921;
+    }
+
+    @media (min-width: 768px) {
+      margin-top: 20%;
+      width: 90%;
+      height: 90%;
+      border: 10px solid #462921;
+    }
+
+    @media (min-width: 1020px) {
+      margin-top: 0;
+    }
+
+    @media (min-width: 1200px) {
+      width: 700px;
+      height: 500px;
+  }
+  `;
+}
+
+export function mediaCellButton() {
+  return `
+    @media (max-width: 768px) {
+      padding: 40% 50%;
     }
   `;
 }

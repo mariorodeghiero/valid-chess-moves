@@ -1,12 +1,17 @@
+<div align="center">
+
 # Valid Chess Moves
 
-<div align="center">
+Chess is a two-player strategy board game played on a chessboard, a checkered game board with 64 squares/cells arranged in an 8x8 grid. Algebraic notation in chess is a method to map cells using A to H as columns (left to right) and 1 to 8 as rows (bottom to top).
+A knight can move either 2 squares horizontally and 1 square vertically OR 2 squares vertically and 1 square horizontally.
+The user selects the starting position and clicks the button, the application highlights all the cells where the Knight can move in exactly 2 turns. [More details in this PDF](doc/Full-Stack-assessment.pdf)
 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/mariorodeghiero/valid-chess-moves/issues)
 [![Feature Requests](https://img.shields.io/github/issues/mariorodeghiero/valid-chess-moves/feature-request.svg)](https://github.com/mariorodeghiero/valid-chess-moves/issues?q=is%3Aopen+is%3Aissue+label%3Afeature-request+sort%3Areactions-%2B1-desc)
 [![Bugs](https://img.shields.io/github/issues/mariorodeghiero/valid-chess-moves/bug.svg)](https://github.com/mariorodeghiero/valid-chess-moves/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3Abug)
-[![GitHub](https://img.shields.io/github/tag/mariorodeghiero/valid-chess-moves.svg?style=flat-square)](https://github.com/mariorodeghiero/valid-chess-moves/tags)
 [![The MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+
+<img src="src/img/game.png" width="600" />
 
 </div>
 
@@ -14,8 +19,10 @@
 
 - [ReactJS](https://reactjs.org) - ReactJS
 - [styled-components](http://styled-components.com/) - styled-components
-- [Heroku](https://firebase.google.com/) - Firebase
+- [Heroku](https://www.heroku.com) - Heroku
 - [Node.js](https://nodejs.org/en/) - Node.js
+
+**Note:** [The API is available in this repository](https://github.com/mariorodeghiero/api-valid-chess-move)
 
 ## Style Guide
 
@@ -29,7 +36,7 @@
 
 ## Install
 
-First, clone the repo via git:
+First, clone the repository via git:
 
 ```bash
 git clone https://github.com/mariorodeghiero/valid-chess-moves.git your-project-name
@@ -56,12 +63,6 @@ Run the command below to deploy, minimizing All Files.
 
 ```bash
 $ npm run build
-```
-
-or
-
-```bash
-$ yarn build
 ```
 
 ## Contributing

@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 
-import Chessboard from './Components/Chessboard';
+import Main from './Components/Main';
 import Footer from './Components/Footer';
 
 const GlobalStyle = createGlobalStyle`
-  html,body{
+  html,
+  body{
     @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
     line-height: 1.1;
@@ -21,23 +23,13 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
+const App = () => (
 
-    this.state = {
+  <React.Fragment>
+    <GlobalStyle />
+    <Main />
+    <Footer />
+  </React.Fragment>
+);
 
-    };
-  }
-
-  render() {
-    return (
-
-      <React.Fragment>
-        <GlobalStyle />
-        <Chessboard />
-        <Footer />
-      </React.Fragment>
-    );
-  }
-}
+export default App;

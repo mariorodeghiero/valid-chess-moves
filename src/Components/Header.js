@@ -6,16 +6,19 @@ import Logo from '../img/logo.svg';
 
 const Welcome = styled.div`
   padding-top: 80px;
-  img{
+
+  img {
     width: 140px;
     height: 140px;
   }
-  h1{
+
+  h1 {
     padding-top: 30px;
     font-weight: 100;
     color: #000;
   }
-  p{
+
+  p {
     margin: 0 auto;
     width: 70%;
     color: #000;
